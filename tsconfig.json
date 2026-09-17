@@ -1,5 +1,5 @@
 {
-  "include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.ts", "eslint.config.js"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.ts", "eslint.config.js", "node_modules/vite/client.d.ts"],
   "compilerOptions": {
     "target": "ES2022",
     "jsx": "react-jsx",
@@ -7,9 +7,9 @@
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "types": ["vite/client"],
 
-    "moduleResolution": "Bundler",
+    "moduleResolution": "NodeNext",
     "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": false,
+    "verbatimModuleSyntax": true,
     "noEmit": true,
 
     "skipLibCheck": true,
