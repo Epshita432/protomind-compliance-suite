@@ -10,8 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AnalyzeRouteImport } from './routes/analyze'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as AnalysisIdRouteImport } from './routes/analysis.$id'
 import { Route as TendersIndexRouteImport } from './routes/tenders.index'
 import { Route as TendersIdRouteImport } from './routes/tenders.$id'
 import { Route as TendersIdIndexRouteImport } from './routes/tenders.$id.index'
@@ -22,6 +24,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AnalyzeRoute = AnalyzeRouteImport.update({
+  id: '/analyze',
+  path: '/analyze',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -30,6 +37,11 @@ const DashboardRoute = DashboardRouteImport.update({
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnalysisIdRoute = AnalysisIdRouteImport.update({
+  id: '/analysis/$id',
+  path: '/analysis/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TendersIndexRoute = TendersIndexRouteImport.update({
@@ -55,8 +67,10 @@ const TendersIdUploadRoute = TendersIdUploadRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/analyze': typeof AnalyzeRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
+  '/analysis/$id': typeof AnalysisIdRoute
   '/tenders/$id': typeof TendersIdRouteWithChildren
   '/tenders/': typeof TendersIndexRoute
   '/tenders/$id/upload': typeof TendersIdUploadRoute
@@ -64,8 +78,10 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/analyze': typeof AnalyzeRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
+  '/analysis/$id': typeof AnalysisIdRoute
   '/tenders': typeof TendersIndexRoute
   '/tenders/$id/upload': typeof TendersIdUploadRoute
   '/tenders/$id': typeof TendersIdIndexRoute
@@ -73,8 +89,10 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/analyze': typeof AnalyzeRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
+  '/analysis/$id': typeof AnalysisIdRoute
   '/tenders/$id': typeof TendersIdRouteWithChildren
   '/tenders/': typeof TendersIndexRoute
   '/tenders/$id/upload': typeof TendersIdUploadRoute
@@ -84,8 +102,10 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/analyze'
     | '/dashboard'
     | '/login'
+    | '/analysis/$id'
     | '/tenders/$id'
     | '/tenders/'
     | '/tenders/$id/upload'
@@ -93,16 +113,20 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/analyze'
     | '/dashboard'
     | '/login'
+    | '/analysis/$id'
     | '/tenders'
     | '/tenders/$id/upload'
     | '/tenders/$id'
   id:
     | '__root__'
     | '/'
+    | '/analyze'
     | '/dashboard'
     | '/login'
+    | '/analysis/$id'
     | '/tenders/$id'
     | '/tenders/'
     | '/tenders/$id/upload'
@@ -111,8 +135,10 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AnalyzeRoute: typeof AnalyzeRoute
   DashboardRoute: typeof DashboardRoute
   LoginRoute: typeof LoginRoute
+  AnalysisIdRoute: typeof AnalysisIdRoute
   TendersIdRoute: typeof TendersIdRouteWithChildren
   TendersIndexRoute: typeof TendersIndexRoute
 }
@@ -124,6 +150,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analyze': {
+      id: '/analyze'
+      path: '/analyze'
+      fullPath: '/analyze'
+      preLoaderRoute: typeof AnalyzeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -138,6 +171,13 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analysis/$id': {
+      id: '/analysis/$id'
+      path: '/analysis/$id'
+      fullPath: '/analysis/$id'
+      preLoaderRoute: typeof AnalysisIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tenders/': {
@@ -187,8 +227,10 @@ const TendersIdRouteWithChildren = TendersIdRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AnalyzeRoute: AnalyzeRoute,
   DashboardRoute: DashboardRoute,
   LoginRoute: LoginRoute,
+  AnalysisIdRoute: AnalysisIdRoute,
   TendersIdRoute: TendersIdRouteWithChildren,
   TendersIndexRoute: TendersIndexRoute,
 }
