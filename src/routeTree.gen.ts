@@ -10,8 +10,15 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AnalyzeRouteImport } from './routes/analyze'
+import { Route as AuditLogRouteImport } from './routes/audit-log'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as AnalysisIdRouteImport } from './routes/analysis.$id'
+import { Route as RequirementsIdRouteImport } from './routes/requirements.$id'
 import { Route as TendersIndexRouteImport } from './routes/tenders.index'
 import { Route as TendersIdRouteImport } from './routes/tenders.$id'
 import { Route as TendersIdIndexRouteImport } from './routes/tenders.$id.index'
@@ -22,14 +29,49 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AnalyzeRoute = AnalyzeRouteImport.update({
+  id: '/analyze',
+  path: '/analyze',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuditLogRoute = AuditLogRouteImport.update({
+  id: '/audit-log',
+  path: '/audit-log',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DocumentsRoute = DocumentsRouteImport.update({
+  id: '/documents',
+  path: '/documents',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnalysisIdRoute = AnalysisIdRouteImport.update({
+  id: '/analysis/$id',
+  path: '/analysis/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RequirementsIdRoute = RequirementsIdRouteImport.update({
+  id: '/requirements/$id',
+  path: '/requirements/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TendersIndexRoute = TendersIndexRouteImport.update({
@@ -55,8 +97,15 @@ const TendersIdUploadRoute = TendersIdUploadRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/analyze': typeof AnalyzeRoute
+  '/audit-log': typeof AuditLogRoute
   '/dashboard': typeof DashboardRoute
+  '/documents': typeof DocumentsRoute
   '/login': typeof LoginRoute
+  '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
+  '/analysis/$id': typeof AnalysisIdRoute
+  '/requirements/$id': typeof RequirementsIdRoute
   '/tenders/$id': typeof TendersIdRouteWithChildren
   '/tenders/': typeof TendersIndexRoute
   '/tenders/$id/upload': typeof TendersIdUploadRoute
@@ -64,8 +113,15 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/analyze': typeof AnalyzeRoute
+  '/audit-log': typeof AuditLogRoute
   '/dashboard': typeof DashboardRoute
+  '/documents': typeof DocumentsRoute
   '/login': typeof LoginRoute
+  '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
+  '/analysis/$id': typeof AnalysisIdRoute
+  '/requirements/$id': typeof RequirementsIdRoute
   '/tenders': typeof TendersIndexRoute
   '/tenders/$id/upload': typeof TendersIdUploadRoute
   '/tenders/$id': typeof TendersIdIndexRoute
@@ -73,8 +129,15 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/analyze': typeof AnalyzeRoute
+  '/audit-log': typeof AuditLogRoute
   '/dashboard': typeof DashboardRoute
+  '/documents': typeof DocumentsRoute
   '/login': typeof LoginRoute
+  '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
+  '/analysis/$id': typeof AnalysisIdRoute
+  '/requirements/$id': typeof RequirementsIdRoute
   '/tenders/$id': typeof TendersIdRouteWithChildren
   '/tenders/': typeof TendersIndexRoute
   '/tenders/$id/upload': typeof TendersIdUploadRoute
@@ -84,8 +147,15 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/analyze'
+    | '/audit-log'
     | '/dashboard'
+    | '/documents'
     | '/login'
+    | '/reports'
+    | '/settings'
+    | '/analysis/$id'
+    | '/requirements/$id'
     | '/tenders/$id'
     | '/tenders/'
     | '/tenders/$id/upload'
@@ -93,16 +163,30 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/analyze'
+    | '/audit-log'
     | '/dashboard'
+    | '/documents'
     | '/login'
+    | '/reports'
+    | '/settings'
+    | '/analysis/$id'
+    | '/requirements/$id'
     | '/tenders'
     | '/tenders/$id/upload'
     | '/tenders/$id'
   id:
     | '__root__'
     | '/'
+    | '/analyze'
+    | '/audit-log'
     | '/dashboard'
+    | '/documents'
     | '/login'
+    | '/reports'
+    | '/settings'
+    | '/analysis/$id'
+    | '/requirements/$id'
     | '/tenders/$id'
     | '/tenders/'
     | '/tenders/$id/upload'
@@ -111,8 +195,15 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AnalyzeRoute: typeof AnalyzeRoute
+  AuditLogRoute: typeof AuditLogRoute
   DashboardRoute: typeof DashboardRoute
+  DocumentsRoute: typeof DocumentsRoute
   LoginRoute: typeof LoginRoute
+  ReportsRoute: typeof ReportsRoute
+  SettingsRoute: typeof SettingsRoute
+  AnalysisIdRoute: typeof AnalysisIdRoute
+  RequirementsIdRoute: typeof RequirementsIdRoute
   TendersIdRoute: typeof TendersIdRouteWithChildren
   TendersIndexRoute: typeof TendersIndexRoute
 }
@@ -126,6 +217,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/analyze': {
+      id: '/analyze'
+      path: '/analyze'
+      fullPath: '/analyze'
+      preLoaderRoute: typeof AnalyzeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/audit-log': {
+      id: '/audit-log'
+      path: '/audit-log'
+      fullPath: '/audit-log'
+      preLoaderRoute: typeof AuditLogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard': {
       id: '/dashboard'
       path: '/dashboard'
@@ -133,11 +238,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/documents': {
+      id: '/documents'
+      path: '/documents'
+      fullPath: '/documents'
+      preLoaderRoute: typeof DocumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analysis/$id': {
+      id: '/analysis/$id'
+      path: '/analysis/$id'
+      fullPath: '/analysis/$id'
+      preLoaderRoute: typeof AnalysisIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/requirements/$id': {
+      id: '/requirements/$id'
+      path: '/requirements/$id'
+      fullPath: '/requirements/$id'
+      preLoaderRoute: typeof RequirementsIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tenders/': {
@@ -187,8 +327,15 @@ const TendersIdRouteWithChildren = TendersIdRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AnalyzeRoute: AnalyzeRoute,
+  AuditLogRoute: AuditLogRoute,
   DashboardRoute: DashboardRoute,
+  DocumentsRoute: DocumentsRoute,
   LoginRoute: LoginRoute,
+  ReportsRoute: ReportsRoute,
+  SettingsRoute: SettingsRoute,
+  AnalysisIdRoute: AnalysisIdRoute,
+  RequirementsIdRoute: RequirementsIdRoute,
   TendersIdRoute: TendersIdRouteWithChildren,
   TendersIndexRoute: TendersIndexRoute,
 }
